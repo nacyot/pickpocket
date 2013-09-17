@@ -1,4 +1,5 @@
 # Pickpocket
+[![Code Climate](https://codeclimate.com/github/nacyot/pickpocket.png)](https://codeclimate.com/github/nacyot/pickpocket)
 
 TODO: Write a gem description
 
