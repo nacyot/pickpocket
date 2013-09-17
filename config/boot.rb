@@ -1,9 +1,13 @@
 require 'rubygems'
 require 'bundler/setup'
+Bundler.require(:default)
+require 'open-uri'
 require 'dotenv'
 require 'twitter'
 require 'pocket'
-Bundler.require(:default)
+require 'nokogiri'
+require 'resolv-replace'
+require 'timeout'
 
 # Dotenv Setting
 Dotenv.load
