@@ -28,4 +28,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "pocket-ruby"
   spec.add_runtime_dependency "twitter"
   spec.add_runtime_dependency "dotenv"
+  spec.add_runtime_dependency "sinatra"
+  spec.add_runtime_dependency "nokogiri"
 end
