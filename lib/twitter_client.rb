@@ -9,6 +9,7 @@ module Pickpocket
     end
 
     def fetch_favorites(id)
+      @twitter.favorites id, fetch_options
     end
 
     private    

@@ -3,17 +3,16 @@ module Pickpocket
     class Tweets
       CONFIG_DIR = File.join(__dir__, "..", "..", "config")
       TMP_DIR = File.join(__dir__, "..", "..","tmp")
-
+      
       def initialize(tweets)
         @tweets = tweets
-        @tweets_has_link = extract_links
-        get_title
+        extract_links
       end
 
       def tweets
         @tweets
       end
-      
+
       def extract_links
         @tweets.delete_if do |tweet|
           tweet.attrs[:entities][:urls].size < 1
@@ -21,7 +20,7 @@ module Pickpocket
       end
 
       def get_titles
-        tweets_has_link.each_with_index do |tweet, index|
+        tweets.each_with_index do |tweet, index|
           tweet.attrs[:entities][:urls].each do |url|
             get_title url, tweet[:text]
           end
