@@ -7,7 +7,9 @@ require 'twitter'
 require 'pocket'
 require 'nokogiri'
 require 'resolv-replace'
+require 'kconv'
 require 'timeout'
+require 'singleton'
 
 # Dotenv Setting
 Dotenv.load
