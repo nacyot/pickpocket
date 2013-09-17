@@ -1,14 +1,9 @@
 module Pickpocket
   class PickTwitter
-    def initialize
-      @twitter = Twitter.new
-      @pocket = Pocket.new
-    end
-    
-    def pick(tweets)
+    def self.pick(tweets)
       items = []
       
-      @tweets_has_link.each_with_index do |tweet, index|
+      tweets.each_with_index do |tweet, index|
         tweet = tweet.attrs
         tweet[:entities][:urls].each do |url|
           items << {
@@ -24,7 +19,7 @@ module Pickpocket
         end
       end
 
-      @pocket.modify(items)
+      PocketClient.instance.modify(items)
     end
   end
 end

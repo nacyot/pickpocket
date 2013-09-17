@@ -3,8 +3,8 @@ module Pickpocket
     class TweetsBackup
       TMP_DIR = File.join(__dir__, "..", "..","tmp")
       
-      def self.tmp_file
-        File.join(TMP_DIR, "timeline.dump")
+      def self.tmp_file(file = "timeline.dump")
+        File.join(TMP_DIR, file)
       end
       
       def self.save(tweets)
@@ -13,8 +13,8 @@ module Pickpocket
         end
       end
 
-      def self.restore
-        Marshal.restore File.read(tmp_file)
+      def self.restore(file = "timeline.dump")
+        Marshal.restore File.read(tmp_file(file))
       end
     end
   end
