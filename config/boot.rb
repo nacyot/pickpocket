@@ -15,7 +15,7 @@ require 'singleton'
 Dotenv.load
 
 # Load Library File
-Dir[File.join(__dir__, "../lib/*.rb")].each {|file| require file }
+Dir[File.join(__dir__, "../lib/**/*.rb")].each {|file| require file }
 
 
 
