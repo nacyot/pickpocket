@@ -3,28 +3,25 @@ require 'spec_helper'
 
 module Pickpocket
   describe TwitterClient do
-    let(:twitter) {Pickpocket::TwitterClient.new}
+    let(:twitter) { Pickpocket::TwitterClient.instance }
 
     describe "Twitter API" do
       before(:each) do
-        twitter.stub(:fetch_timeline){ twitter.restore_tmp_timeline }        
+        twitter.stub(:fetch_timeline){ Twitter::TweetsBackup.restore }
+        twitter.stub(:fetch_favorites){ Twitter::TweetsBackup.restore }
       end
       
       it "Timeline 가져오기" do
-        twitter.timeline.should be_instance_of(Array)
-        twitter.timeline.count.should eq(21)
+        timeline = twitter.fetch_timeline
+        timeline.should be_instance_of(Array)
+        timeline.count.should eq(21)
       end
 
-      it "Link가 있는 Tweets 추려내기" do
-        twitter.tweets_has_link.should be_instance_of(Array)
-        twitter.tweets_has_link.count.should eq(8)
+      it "Favorites 가져오기" do
+        favorites = twitter.fetch_favorites
+        favorites.should be_instance_of(Array)
+        favorites.count.should eq(21)
       end
-
-      it "Link의 타이틀 가져오기" do
-        twitter.get_titles
-        twitter.tweets_has_link[0].attrs[:entities][:urls][0][:title].should eq("Splunk Acquires BugSense, A Platform For Analyzing Mobile Data  |  TechCrunch")
-      end
-      
     end
 
 
