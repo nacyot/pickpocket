@@ -11,6 +11,8 @@ module Pickpocket
       end
       
       it "아이템 등록 및 삭제" do
+        PickTwitter.stub(:modify).and_return({"action_results" => [{"item_id" => "2893842"}]})
+        
         result = PickTwitter.pick tweets.tweets
         result.should be_has_key("action_results")
 
