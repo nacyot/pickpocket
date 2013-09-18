@@ -13,6 +13,7 @@ module Pickpocket
       item = result["action_results"][0]
       item["normal_url"].should eq(url)
 
+      pocket.stub(:modify).and_return({"action_results" => [true]})
       result = pocket.modify([{action: "delete", item_id: item["item_id"]}])
       result.should be_has_key("action_results")
       result["action_results"][0].should be_true
