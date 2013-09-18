@@ -25,10 +25,12 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "guard"
   spec.add_development_dependency "guard-rspec"
 
+  spec.add_dependency "coveralls"
+
   spec.add_runtime_dependency "pocket-ruby"
   spec.add_runtime_dependency "twitter"
   spec.add_runtime_dependency "dotenv"
   spec.add_runtime_dependency "sinatra"
   spec.add_runtime_dependency "nokogiri"
-  spec.add_runtime_dependency "coveralls"
+
 end
