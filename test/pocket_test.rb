@@ -1,6 +1,10 @@
+# Copyright (c) 2012 Geknowm, Inc. Portions
+# Copyright (c) 2011 Instagram (Burbn, Inc.)
+# https://github.com/Geknowm/pocket-ruby/blob/master/demo-server.rb
+# This code based on pocket-ruby/demo-nerver.rb
+
 require File.join(__dir__, '..', 'config', 'boot.rb')
 require 'sinatra'
-require 'pp'
 
 enable :sessions
 
@@ -10,7 +14,6 @@ Pocket.configure do |config|
   config.consumer_key = ENV['POCKET_CONSUMER_KEY']
 end
 
-
 get '/reset' do
   puts "GET /reset"
   session.clear
@@ -19,12 +22,12 @@ end
 get "/" do
   puts "GET /"
   puts "session: #{session}"
-
+    
   if session[:access_token]
     '
 <a href="/add?url=http://geknowm.com">Add Geknowm</a>
 <a href="/retrieve">Retrieve items</a>
-' + session[:access_token]
+' + "<br /> Your Pocket access token: " + session[:access_token]
   else
     '<a href="/oauth/connect">Connect with Pocket</a>'
   end
@@ -47,23 +50,5 @@ get "/oauth/callback" do
   session[:access_token] = access_token
   puts "session: #{session}"
   redirect "/"
-end
-
-get '/add' do
-  client = Pocket.client(:access_token => session[:access_token])
-  info = client.add :url => 'http://geknowm.com'
-  "<pre>#{info}</pre>"
-end
-
-get "/retrieve" do
-  client = Pocket.client(:access_token => session[:access_token])
-  info = client.retrieve :detailType => :complete
-
-  # html = "<h1>#{user.username}'s recent photos</h1>"
-  # for media_item in client.user_recent_media
-  # html << "<img src='#{media_item.images.thumbnail.url}'>"
-  # end
-  # html
-  "<pre>#{info}</pre>"
 end
 
