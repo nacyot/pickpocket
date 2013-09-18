@@ -25,7 +25,7 @@ module Pickpocket
           }
         end
 
-        pocket = PocketClient.instance
+        pocket = Object.new
         pocket.stub(:modify).and_return({"action_results" => [true]})
         result = pocket.modify(items)
         result.should be_has_key("action_results")
