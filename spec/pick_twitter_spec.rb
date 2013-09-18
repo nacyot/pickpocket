@@ -19,7 +19,7 @@ module Pickpocket
 
         items = []
         result["action_results"].each do |pocket|
-          items <<{
+          items << {
             "action" => "delete",
             "item_id" => pocket["item_id"]
           }
