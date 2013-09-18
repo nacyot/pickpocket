@@ -1,5 +1,7 @@
 # Pickpocket
 [![Code Climate](https://codeclimate.com/github/nacyot/pickpocket.png)](https://codeclimate.com/github/nacyot/pickpocket)
+[![Build Status](https://travis-ci.org/nacyot/pickpocket.png)](https://travis-ci.org/nacyot/pickpocket)
+[![Coverage Status](https://coveralls.io/repos/nacyot/pickpocket/badge.png)](https://coveralls.io/r/nacyot/pickpocket)
 
 TODO: Write a gem description
 
